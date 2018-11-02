@@ -7,6 +7,7 @@ export default class Ball {
     this.boardHeight = boardHeight;
     this.direction = 1;
     this.reset();
+    this.ping = new Audio("public/sounds/pong-01.wav");
     this.currentColor = ["#FFFFFF", "#353535"];
     this.counter = 0;
     this.timer = 0;
@@ -43,24 +44,46 @@ export default class Ball {
   paddleCollision(player1, player2) {
     if (this.vx > 0) {
       //...
-      let paddle = player2.coordinates(
+      let paddle2 = player2.coordinates(
         player2.x,
         player2.y,
         player2.width,
         player2.height
       );
-      let [leftX, rightX, topY, bottomY] = paddle;
+
+      let [leftX, rightX, topY, bottomY] = paddle2;
 
       if (
         this.x + this.radius >= leftX &&
         this.x + this.radius <= rightX &&
-        (this.y >= topY && this.y <= bottomY)
+        (this.y + this.radius >= topY && this.y + this.radius <= bottomY)
       ) {
         this.vx *= -1;
+        this.ping.play();
       }
-    } else {
+    } else if (this.vx < 0) {
       //...
+      let paddle1 = player1.coordinates(
+        player1.x,
+        player1.y,
+        player1.width,
+        player1.height
+      );
+      let [leftX, rightX, topY, bottomY] = paddle1;
+      if (
+        this.x - this.radius >= leftX &&
+        this.x - this.radius <= rightX &&
+        (this.y + this.radius >= topY && this.y + this.radius <= bottomY)
+      ) {
+        this.vx *= -1;
+        this.ping.play();
+      }
     }
+  }
+
+  goal(player) {
+    player.score++;
+    this.reset();
   }
 
   render(svg, player1, player2) {
@@ -69,6 +92,14 @@ export default class Ball {
 
     this.wallCollision();
     this.paddleCollision(player1, player2);
+
+    if (this.x - this.radius <= 0) {
+      this.goal(player1);
+      this.direction = 1;
+    } else if (this.x + this.radius >= this.boardWidth) {
+      this.goal(player2);
+      this.direction = -1;
+    }
 
     let ball = document.createElementNS(SVG_NS, "circle");
     ball.setAttributeNS(null, "fill", this.currentColor[this.counter]);
