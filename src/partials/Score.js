@@ -5,6 +5,7 @@ export default class Score {
     this.x = x;
     this.y = y;
     this.size = size;
+    // this.winner = 2;
   }
 
   render(svg, score) {

@@ -8,6 +8,7 @@ export default class Ball {
     this.direction = 1;
     this.reset();
     this.ping = new Audio("public/sounds/pong-01.wav");
+
     this.currentColor = ["#FFFFFF", "#353535"];
     this.counter = 0;
     this.timer = 0;
@@ -86,6 +87,12 @@ export default class Ball {
     this.reset();
   }
 
+  changeColor() {
+    setTimeout(() => {
+      this.counter = 0;
+    }, 100);
+  }
+
   render(svg, player1, player2) {
     this.x += this.vx;
     this.y += this.vy;
@@ -106,15 +113,13 @@ export default class Ball {
     ball.setAttributeNS(null, "r", this.radius);
     ball.setAttributeNS(null, "cx", this.x);
     ball.setAttributeNS(null, "cy", this.y);
-    // this.timer++;
-    // if (this.timer === 260) {
-    //   this.counter++;
-    //   if (this.counter > 1) {
-    //     this.counter = 0;
-    //   } else if (this.timer > 260) {
-    //     this.counter = 0;
-    //   }
-    // }
+
+    this.timer++;
+    if (this.timer === 260) {
+      this.counter++;
+      this.changeColor();
+      this.timer = 0;
+    }
 
     svg.appendChild(ball);
   }
