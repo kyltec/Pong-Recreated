@@ -8,6 +8,7 @@ export default class Ball {
     this.direction = 1;
     this.reset();
     this.ping = new Audio("public/sounds/pong-01.wav");
+    this.winner = 2;
 
     this.currentColor = ["#FFFFFF", "#353535"];
     this.counter = 0;
@@ -84,6 +85,10 @@ export default class Ball {
 
   goal(player) {
     player.score++;
+    if (player.score === this.winner) {
+      alert("Winner");
+      this.reset();
+    }
     this.reset();
   }
 
