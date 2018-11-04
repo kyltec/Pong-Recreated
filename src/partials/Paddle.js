@@ -1,23 +1,8 @@
 import { SVG_NS } from "../settings";
 
 export default class Paddle {
-  constructor(
-    boardHeight,
-    // boardWidth,
-    width,
-    height,
-    x,
-    y,
-    up,
-    down,
-    player
-    // p1Left,
-    // p1Right,
-    // p2Left,
-    // p2Right
-  ) {
+  constructor(boardHeight, width, height, x, y, up, down, player) {
     this.boardHeight = boardHeight;
-    // this.boardWidth = boardWidth;
     this.width = width;
     this.height = height;
     this.x = x;
@@ -27,10 +12,6 @@ export default class Paddle {
 
     this.keyUp = up;
     this.keyDown = down;
-    // this.keyLeftP1 = p1Left;
-    // this.keyRightP1 = p1Right;
-    // this.keyLeftP2 = p2Left;
-    // this.keyRightP2 = p2Right;
     this.player = player;
     this.keyState = {};
 
@@ -59,20 +40,6 @@ export default class Paddle {
   down() {
     this.y = Math.min(this.boardHeight - this.height, this.y + this.speed);
   }
-
-  // p1Left() {
-  //   this.x = Math.min(this.x - this.speed, this.boardWidth + 10);
-  // }
-  // p1Right() {
-  //   this.x = Math.max(this.x + this.speed, this.boardWidth / 2);
-  // }
-
-  // p2Left() {
-  //   this.x = Math.min(this.x - this.speed, this.boardWidth / 2);
-  // }
-  // p2Right() {
-  //   this.x = Math.max(this.x + this.speed, this.boardWidth - 10);
-  // }
 
   coordinates(x, y, width, height) {
     let leftX = x;

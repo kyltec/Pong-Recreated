@@ -8,7 +8,7 @@ export default class Ball {
     this.direction = 1;
     this.reset();
     this.ping = new Audio("public/sounds/pong-01.wav");
-    this.winner = 2;
+    this.winner = 5;
 
     this.currentColor = ["#FFFFFF", "#353535"];
     this.counter = 0;
@@ -87,15 +87,16 @@ export default class Ball {
     player.score++;
     if (player.score === this.winner) {
       alert("Winner");
-      this.reset();
+      alert("Reload browser to reset the game.");
     }
+
     this.reset();
   }
 
   changeColor() {
     setTimeout(() => {
       this.counter = 0;
-    }, 100);
+    }, 150);
   }
 
   render(svg, player1, player2) {
@@ -120,7 +121,7 @@ export default class Ball {
     ball.setAttributeNS(null, "cy", this.y);
 
     this.timer++;
-    if (this.timer === 260) {
+    if (this.timer === 100) {
       this.counter++;
       this.changeColor();
       this.timer = 0;

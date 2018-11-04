@@ -18,10 +18,22 @@ A basic pong game using SVGs.
 
 ## Keys
 
+- spacebar: pause
+
 **Player 1:**
-* a: up
-* z: down
+
+- w: up
+- s: down
 
 **Player 2:**
-* ▲ : up
-* ▼: down
+
+- ▲ : up
+- ▼: down
+
+**Built With**
+
+JavaScript - used to create the board, paddles, ball, score board
+
+**Author**
+
+- Kyle Tecson

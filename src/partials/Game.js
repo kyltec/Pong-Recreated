@@ -25,8 +25,6 @@ export default class Game {
       (this.height - this.paddleHeight) / 2,
       KEYS.w,
       KEYS.s,
-      // KEYS.a,
-      // KEYS.d,
       "player1"
     );
 
@@ -38,8 +36,6 @@ export default class Game {
       (this.height - this.paddleHeight) / 2,
       KEYS.up,
       KEYS.down,
-      // KEYS.left,
-      // KEYS.right,
       "player2"
     );
 
