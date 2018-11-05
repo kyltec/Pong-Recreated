@@ -87,7 +87,7 @@ export default class Ball {
     player.score++;
     if (player.score === this.winner) {
       alert("Winner" + player);
-      alert("Reload browser to reset the game.");
+      alert("The game will now restart.");
       location.reload();
     }
 
