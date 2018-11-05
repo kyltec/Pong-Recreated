@@ -86,8 +86,9 @@ export default class Ball {
   goal(player) {
     player.score++;
     if (player.score === this.winner) {
-      alert("Winner");
+      alert("Winner" + player);
       alert("Reload browser to reset the game.");
+      location.reload();
     }
 
     this.reset();
