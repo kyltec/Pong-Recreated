@@ -2,6 +2,8 @@
 
 A basic pong game using SVGs.
 
+<img src="./screenshots/pong-screenshot.png" alt="pong screenshot" width="800px" height="500px">
+
 ## Setup
 
 **Install dependencies:**
