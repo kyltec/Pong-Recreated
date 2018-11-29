@@ -86,7 +86,7 @@ export default class Ball {
   goal(player) {
     player.score++;
     if (player.score === this.winner) {
-      alert("Winner" + player.player);
+      alert("Winner: " + player.player);
       alert("The game will now restart.");
       location.reload();
     }
@@ -108,10 +108,10 @@ export default class Ball {
     this.paddleCollision(player1, player2);
 
     if (this.x - this.radius <= 0) {
-      this.goal(player1);
+      this.goal(player2);
       this.direction = 1;
     } else if (this.x + this.radius >= this.boardWidth) {
-      this.goal(player2);
+      this.goal(player1);
       this.direction = -1;
     }
 
